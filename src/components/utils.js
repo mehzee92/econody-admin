@@ -1,5 +1,5 @@
 
-export const apiUrl =    "http://localhost:8000"; //"https://dapp.charcoin.org";
+export const apiUrl =    "http://31.97.150.58:8000";
 
 
 export const toPeriod=(totalSeconds)=> {
