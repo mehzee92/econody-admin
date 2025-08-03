@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+:root {
+  --background: #e1e5ed;
+  --foreground: #2c2e32;
+}
+
+@font-face {
+  font-family: 'CustomFont';
+  src: url('/fonts/file.ttf') format('woff2'),
+    url('/fonts/file.woff2') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'CustomFont2';
+  src: url('/fonts/ZeitungPro-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.Font1 {
+  font-family: 'CustomFont', sans-serif;
+}
+.Font2 {
+  font-family: 'CustomFont2', sans-serif;
+}
+
+.arail-font{
+  font-family: Arial, Helvetica, sans-serif;
+}
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #d5d5d5;
+    --foreground: #152950;
+  }
+}
+
+body {
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+button {
+  cursor: pointer;
+}
+
+.button1 {
+  border: #2f5597 2px solid;
+  border-radius: 30px;
+  background: #B4D2EB;
+  background: linear-gradient(180deg, rgba(180, 210, 235, 1) 0%, rgba(240, 246, 251, 1) 35%, rgba(190, 215, 238, 1) 75%, rgba(244, 248, 252, 1) 100%);
+}
+
+.progress-gradient {
+  background: #00B050;
+  background: linear-gradient(90deg, rgba(0, 176, 80, 1) 80%, rgba(188, 221, 228, 1) 100%);
+}
+.container{
+  min-height: 700px;
+}
+main {
+  min-height:400px
+}
+
+
+hr {
+  border:solid 1px rgba(225, 234, 225, 0.552);
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+
+
+.show {
+  outline: solid 1px rgb(230, 37, 7);
+}
