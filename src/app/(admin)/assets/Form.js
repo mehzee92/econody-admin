@@ -16,7 +16,11 @@ export default function TokenizeAssetForm({onClose}) {
         description:"",
         token_icon:"",
         total_supply:"",
-        destination_wallet:""
+        token_uri:"",
+        token_id:"",
+        destination_wallet:"", 
+        token_address:"",
+        token_standard:""        
     }
 
     const [formData, setFormData] = useState(defaultValue);
@@ -33,7 +37,7 @@ export default function TokenizeAssetForm({onClose}) {
     e.preventDefault();
     // Check if all fields in formData are filled
     const missingFields = Object.entries(formData)
-        .filter(([key, value]) => value === undefined || value === null || value === '')
+        .filter(([, value]) => value === undefined || value === null || value === '')
         .map(([key]) => key);
 
     if (missingFields.length > 0) {
@@ -84,6 +88,51 @@ export default function TokenizeAssetForm({onClose}) {
 
 
 
+
+
+                <div>
+                    <label className="block mb-1 text-sm text-gray-700 font-semibold">Token Standard</label>
+                    <select
+                        type="text"
+                        name="token_standard"
+                        value={formData?.token_standard  ?? ''}
+                        onChange={handleChange}                        
+                        className={cls.input}>
+                        <option>ERC20</option>
+                        <option>ERC721</option>
+                        <option>ERC1155</option>
+                    </select>
+                </div>                
+
+        
+                <div>
+                    <label className="block mb-1 text-sm text-gray-700 font-semibold">
+                        Token Address (<span className="text-red-400">Only in case of ERC721 and ERC1155</span>)
+                    </label>
+                    <input
+                        type="text"
+                        name="token_address"
+                        value={formData?.token_address  ?? ''}
+                        onChange={handleChange}                        
+                        className={cls.input}
+                    />
+                </div>
+
+
+                <div>
+                    <label className="block mb-1 text-sm text-gray-700 font-semibold">Destination Wallet</label>
+                    <input
+                        type="text"
+                        name="destination_wallet"
+                        value={formData?.destination_wallet  ?? ''}
+                        onChange={handleChange}                        
+                        className={cls.input}
+                    />
+                </div>
+
+
+
+
                 {/* Upload Token Icon */}
                 <div>
                     <label className="block mb-1 text-sm text-gray-700 font-semibold">Token Logo</label>
@@ -131,20 +180,33 @@ export default function TokenizeAssetForm({onClose}) {
                         className={cls.input}  />  
                 </div>
 
-                {/* Destination Wallet */}
+                {/* Token URI */}
                 <div>
-                    <label className="block mb-1 text-gray-700 text-sm font-semibold">Destination Wallet (i.e DAO Multisig Wallet) </label>
+                    <label className="block mb-1 text-gray-700 text-sm font-semibold">
+                        Token URI (.json file)
+                    </label>
                     <input
                         type="text"
-                        name="destination_wallet"
-                        value={formData?.destination_wallet  ?? ''}
+                        name="token_uri"
+                        value={formData?.token_uri  ?? ''}
                         onChange={handleChange}                           
                         className={cls.input} />
                 </div>
 
 
+               <div>
+                    <label className="block mb-1 text-gray-700 text-sm font-semibold">
+                        Token ID
+                    </label>
+                    <input
+                        type="text"
+                        name="token_id"
+                        value={formData?.token_id  ?? ''}
+                        onChange={handleChange}                           
+                        className={cls.input} />
+                </div>
 
-                {/* Destination Wallet */}
+                {/* Description Wallet */}
                 <div>
                     <label className="block mb-1 text-gray-700 text-sm font-semibold">Description</label>
                     <textarea

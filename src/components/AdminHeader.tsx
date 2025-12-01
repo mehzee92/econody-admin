@@ -1,9 +1,8 @@
 "use client"
 import Image from 'next/image'
 import Link from 'next/link'
-import { useEffect } from 'react'
 import useUserStore from '@/stores/userStore'
-import { adminLogout, checkToken } from "@/components/utils";
+import { adminLogout } from "@/components/utils";
 
 
 function AdminHeader() {

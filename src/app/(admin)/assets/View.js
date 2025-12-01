@@ -31,12 +31,12 @@ export default function TokenizeAssetForm({onClose, asset}) {
         }));
     };   
     
-    const setValue=(key, value)=> {
-        setFormData((prev) => ({
-        ...prev,
-        [key]:value
-        }));        
-    }
+    // const setValue=(key, value)=> {
+    //     setFormData((prev) => ({
+    //     ...prev,
+    //     [key]:value
+    //     }));        
+    // }
 
 
     const updateAsset = async(e) => {
@@ -94,6 +94,45 @@ export default function TokenizeAssetForm({onClose, asset}) {
                     />
                 </div>
 
+                <div>
+                    <label className="block mb-1 text-sm text-gray-700 font-semibold">Token Standard</label>
+                    <select
+                        type="text"
+                        name="token_standard"
+                        value={formData?.token_standard  ?? ''}
+                        onChange={handleChange}                        
+                        className={cls.input}>
+                        <option>ERC20</option>
+                        <option>ERC721</option>
+                        <option>ERC1155</option>
+                    </select>
+                </div>                
+
+        
+                <div>
+                    <label className="block mb-1 text-sm text-gray-700 font-semibold">
+                        Token Address (<span className="text-red-400">Only in case of ERC721 and ERC1155</span>)
+                    </label>
+                    <input
+                        type="text"
+                        name="token_address"
+                        value={formData?.token_address  ?? ''}
+                        onChange={handleChange}                        
+                        className={cls.input}
+                    />
+                </div>
+
+
+                <div>
+                    <label className="block mb-1 text-sm text-gray-700 font-semibold">Destination Wallet</label>
+                    <input
+                        type="text"
+                        name="destination_wallet"
+                        value={formData?.destination_wallet  ?? ''}
+                        onChange={handleChange}                        
+                        className={cls.input}
+                    />
+                </div>
 
                 {/* Upload Token Icon */}
                 <div>
@@ -152,7 +191,12 @@ export default function TokenizeAssetForm({onClose, asset}) {
 
                 {/* Total Supply */}
                 <div>
-                    <label className="block mb-1 text-sm text-gray-700 font-semibold">Total Supply</label>
+                    <label className="block mb-1 text-sm text-gray-700 font-semibold">
+                        Total Supply
+                        {
+                            formData?.token_standard=="ERC721" && formData?.total_supply>1 ? <span className="text-red-400 px-3">Supply must be 1 if token standard is ERC721</span> : null
+                        }
+                    </label>
                     <input
                         type="text"
                         name="total_supply"
@@ -166,18 +210,30 @@ export default function TokenizeAssetForm({onClose, asset}) {
 
                 {/* Destination Wallet */}
                 <div>
-                    <label className="block mb-1 text-gray-700 text-sm font-semibold">Destination Wallet</label>
+                    <label className="block mb-1 text-gray-700 text-sm font-semibold">
+                        Token URI (.json file)
+                    </label>
                     <input
                         type="text"
-                        name="destination_wallet"
-                        value={formData?.destination_wallet  ?? ''}
+                        name="token_uri"
+                        value={formData?.token_uri  ?? ''}
                         onChange={handleChange}                           
                         className={cls.input}
                     />
                 </div>
 
 
-
+               <div>
+                    <label className="block mb-1 text-gray-700 text-sm font-semibold">
+                        Token ID
+                    </label>
+                    <input
+                        type="text"
+                        name="token_id"
+                        value={formData?.token_id  ?? ''}
+                        onChange={handleChange}                           
+                        className={cls.input} />
+                </div>
 
 
                 {/* Upload Documents */}
@@ -432,15 +488,11 @@ export default function TokenizeAssetForm({onClose, asset}) {
                     <input
                         type="text"
                         name="status"
+                        readOnly={true}
                         value={formData?.status || ""}    
                         onChange={()=>{}}                          
                         className={cls.input}
                     />
-
-                    Mark as : 
-                    <span className="text-blue-800 px-3 cursor-pointer" onClick={()=>setValue('status', "init")}>Initiated</span>
-                    <span className="text-blue-800 px-3 cursor-pointer" onClick={()=>setValue('status', "active")}>Active</span>
-                    <span className="text-blue-800 px-3 cursor-pointer" onClick={()=>setValue('status', "block")}>Blocked</span>
                 </div>  
 
                 <div>
@@ -450,13 +502,11 @@ export default function TokenizeAssetForm({onClose, asset}) {
                     <input
                         type="text"
                         name="status"
+                        readOnly={true}
                         value={formData?.is_listed ? "Listed" : "Delisted"}  
                         onChange={()=>{}}                           
                         className={cls.input}
-                    />
-                    <span className="text-blue-800 px-3 cursor-pointer" onClick={()=>setValue('is_listed', 1)}>List Now</span>
-                    <span className="text-blue-800 px-3 cursor-pointer" onClick={()=>setValue('is_listed', 0)}>Delist Now</span>
-                </div>  
+                    />                </div>  
 
                 <hr />
                 

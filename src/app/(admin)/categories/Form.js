@@ -24,22 +24,22 @@ export default function TokenizeAssetForm({onClose}) {
     };    
 
 
-    const subForm = async (e) => {
-    e.preventDefault();
-    // Check if all fields in formData are filled
-    const missingFields = Object.entries(formData)
-        .filter(([key, value]) => value === undefined || value === null || value === '')
-        .map(([key]) => key);
 
-    if (missingFields.length > 0) {
-        alert(`Please fill all fields. Missing: ${missingFields.join(', ')}`);
-        return;
-    }
-    // Submit form
-    const result = await postData("/api/categories/add", formData);
-    alert(JSON.stringify(result));
-    fetchCategories();
-    onClose();
+    const subForm = async (e) => {
+        e.preventDefault();
+        // Check if all fields in formData are filled
+        const missingFields = Object.entries(formData)
+            .filter(([,value]) => value === undefined || value === null || value === '')
+            .map(([key]) => key);
+
+        if (missingFields.length > 0) {
+            alert(`Please fill all fields. Missing: ${missingFields.join(', ')}`);
+            return;
+        }
+
+        await postData("/api/categories/add", formData);
+        fetchCategories();
+        onClose();
     };
 
 

@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { adminLogin, checkToken  } from "@/components/utils";
 import useUserStore from "@/stores/userStore";
-import useAssetsStore from "@/stores/assetsStore";
+// import useAssetsStore from "@/stores/assetsStore";
 
 const LoginForm = () => {
 
@@ -49,18 +49,18 @@ const LoginForm = () => {
 
 
   return (
-    <div className="flex items-center justify-center p-4" style={{height:"calc(100vh - 150px)"}}>
+    <div className="flex items-center justify-center p-2" style={{height:"calc(100vh - 70px)"}}>
       <form
         onSubmit={handleSubmit}
-        style = {{ border:"solid 1px #00000040"}}
-        className="bg-white shadow-lg rounded-2xl p-8 w-full max-w-md space-y-3"
+        style = {{maxWidth:"360px", border:"solid 1px #00000040"}}
+        className="bg-white shadow-lg rounded-2xl px-4 py-3 w-full max-w-md space-y-3"
       >
-        <h2 className="text-2xl font-semibold text-center text-gray-800">
+        <h2 className="text-xl font-bold text-center text-gray-800">
           Econody Secure Login {isLoggedIn}
         </h2>
 
         <div>
-          <label className="block mb-1 font-medium text-gray-700" htmlFor="username">
+          <label className="block font-medium text-gray-700" htmlFor="username">
             Username
           </label>
           <input
@@ -75,7 +75,7 @@ const LoginForm = () => {
         </div>
 
         <div>
-          <label className="block mb-1 font-medium text-gray-700" htmlFor="password">
+          <label className="block font-medium text-gray-700" htmlFor="password">
             Password
           </label>
           <input
@@ -89,8 +89,8 @@ const LoginForm = () => {
           />
         </div>
 
-        <div>
-          <label className="block mb-1 font-medium text-gray-700" htmlFor="pin">
+        {/* <div>
+          <label className="block font-medium text-gray-700" htmlFor="pin">
             PIN
           </label>
           <input
@@ -103,10 +103,10 @@ const LoginForm = () => {
             onChange={handleChange}
             required
           />
-        </div>
+        </div> */}
 
-        <div>
-          <label className="block mb-1 font-medium text-gray-700" htmlFor="token">
+        {/* <div>
+          <label className="block font-medium text-gray-700" htmlFor="token">
             TOTP
           </label>
           <input
@@ -121,11 +121,11 @@ const LoginForm = () => {
           />
         </div>
 
-        <br />
+        <br /> */}
 
         <button
           type="submit"
-          className="w-full bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-700 transition"
+          className="w-full mb-1 bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-700 transition"
         >
           Login
         </button>

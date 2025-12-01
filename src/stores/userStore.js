@@ -1,7 +1,7 @@
 import { apiUrl } from '@/components/utils';
 import { create } from 'zustand'
 
-const useUserStore = create((set, get) => ({
+const useUserStore = create((set) => ({
   user: {
     username: 'Ali Khan',
     role: 'admin',

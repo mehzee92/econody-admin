@@ -1,5 +1,5 @@
-import AdminHeader from '@/components/AdminHeader';
-import Sidebar from '@/components/SideBar';
+// import AdminHeader from '@/components/AdminHeader';
+// import Sidebar from '@/components/SideBar';
 import React from 'react';
 import "@/app/globals.css"
 

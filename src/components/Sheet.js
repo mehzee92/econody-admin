@@ -1,5 +1,3 @@
-import { title } from "process";
-
 const Sheet=({children, show, title, onClose})=>
 {
 

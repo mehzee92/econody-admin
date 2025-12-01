@@ -1,6 +1,5 @@
 'use client';
 import Sheet from "@/components/Sheet";
-import React, { useEffect } from 'react';
 import { useState } from "react";
 import From from "./Form";
 import View from "./View";
@@ -11,19 +10,20 @@ export default function TokenizeAssetForm() {
 
     const[showSheet, setShowSheet] = useState(false);
     const[sheet, setSheet] = useState({title:"Add New Category", form:(<From onClose={()=>setShowSheet(false)} />)});
-    const { categories, fetchCategories } = useCategoriesStore();
+    const { categories } = useCategoriesStore();
 
-    useEffect(()=> {
-      fetchAssets()
-    }, []);
+    // useEffect(()=> {
+    //   fetchAssets()
+    // }, []);
 
 
     return (
         
         <div className="w-full px-4 py-5 md:px-10 ">
 
-            <Sheet title={sheet.title} show={showSheet} onClose={()=>setShowSheet(false)}  children={sheet.form}  />
-            
+            <Sheet title={sheet.title} show={showSheet} onClose={()=>setShowSheet(false)}>
+              {sheet.form}
+            </Sheet>
             <div className="flex justify-content items-center pb-5 space-between">
                 <div>
                     <h2 className="text-2xl font-bold">Categories</h2>

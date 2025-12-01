@@ -5,16 +5,15 @@ import { useState } from 'react';
 import { Menu } from 'lucide-react';
 
 const navItems = [
-  'Tokenizator',
-  'Marketplace',
+  'Connect Wallet',
+  'Governance',
+  'Users',
+  'Create Tokens',
+  'All Assets',  
+  'Assets Need Approval',
+  'Reserve Vault',
+  'Operation Charges',
   'Offerings',
-  'Fee Management',
-  'Wallet Management',
-  'API Management',
-  'Revenue Distribution',
-  'Overview',
-  'Customize Design',
-  'Administrators',
 ];
 
 export default function Sidebar() {
@@ -24,16 +23,15 @@ export default function Sidebar() {
 
   // Map nav items to their corresponding routes
 const navRoutes: Record<string, string> = {
-  'Tokenizator': '/assets',
-  'Marketplace': '/marketplace',
+  'Connect Wallet':'/connectors',
+  'Governance': '/governance',
+  'Users': '/users',
+  'Create Tokens': '/create-tokens',
+  'All Assets': '/assets',
+  'Assets Need Approval':'/assets-pending',
+  'Reserve Vault':'/reserve-vault',
+  'Operation Charges':'/operation-charges',
   'Offerings': '/offerings',
-  'Fee Management': '/fee-management',
-  'Wallet Management': '/wallet-management',
-  'API Management': '/api-management',
-  'Revenue Distribution': '/revenue-distr',
-  'Overview': '/overview',
-  'Customize Design': '/customize-design',
-  'Administrators':'/administrators'
 };
 
 

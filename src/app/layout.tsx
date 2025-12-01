@@ -1,7 +1,7 @@
 "use client"
 import AdminHeader from '@/components/AdminHeader';
 import LoginForm from "@/app/login/page";
-
+import { Providers } from './providers'
 import Sidebar from '@/components/SideBar';
 import React from 'react';
 import "@/app/globals.css"
@@ -19,8 +19,8 @@ export default function AdminLayout({
     <html>
       <body>
       <div className="">
+      <Providers>
       <AdminHeader />
-      
       { isLoggedIn ? (
         <div className='flex'>
           <Sidebar />
@@ -31,7 +31,7 @@ export default function AdminLayout({
       ) : (
         <LoginForm />
       ) }
-
+    </Providers>
 
 
 
