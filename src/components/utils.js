@@ -1,6 +1,4 @@
-
-export const apiUrl =   "http://localhost:8000"; //"http://31.97.150.58:8000";
-
+export const apiUrl = "http://31.97.150.58:8000"; //"http://31.97.150.58:8000";
 
 export const toPeriod=(totalSeconds)=> {
   const days = Math.floor(totalSeconds / (24 * 3600)); // 1 day = 86400 seconds
